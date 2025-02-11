@@ -207,11 +207,43 @@ findDepth(root, x)
     return dist;
 }
 
+// Write isBalanced function 
+
+hight(root) {
+
+    // Base case: Height of empty tree is zero
+    if (root === null)
+        return 0;
+
+    // Height = 1 + max of left height and right heights
+    return 1 + Math.max(this.hight(root.left), this.hight(root.right));
+}
+
+isBalanced(root) {
+
+    // If tree is empty then return true
+    if (root === null)
+        return true;
+
+    // Get the height of left and right subtrees
+    let lHeight = this.hight(root.left);
+    let rHeight = this.hight(root.right);
+
+    // If absolute height difference is greater than 1
+    // Then return false
+    if (Math.abs(lHeight - rHeight) > 1)
+        return false;
+
+    // Recursively check the left and right subtrees
+    return this.isBalanced(root.left) && this.isBalanced(root.right);
+}
+
+
 // THIS MAY NOT WORK
 
-Balance(array) {
+/*Balance(array) {
     return buildTree(array, 0, array.length - 1);
-}
+}*/
 
 preOrder(root) {
     if (root === null) return ;
@@ -341,4 +373,10 @@ practice.postOrder(root);
 console.log("Depth: " + practice.findDepth(root, 5));
 
 console.log("Height: " + practice.findHeight(root, 5));
+
+if (practice.isBalanced(root)) {
+    console.log("True");
+} else {
+    console.log("False");
+}
 
