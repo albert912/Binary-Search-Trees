@@ -94,16 +94,15 @@ delNode(root, x) {
 search(root, data)
 {
 
-    // Base Cases: root is null or key is 
-    // present at root
+   
     if (root === null || root.data === data)
         return root;
 
-    // Key is greater than root's key
+   
     if (root.data < data)
         return this.search(root.right,data);
 
-    // Key is smaller than root's key
+  
     return this.search(root.left, data);
 }
 
@@ -148,16 +147,15 @@ findHeightUtil(root, x)
         return -1;
     }
 
-    // Store the maximum height of
-    // the left and right subtree
-    var leftHeight = this.findHeightUtil(root.left, x);
+   
+    let leftHeight = this.findHeightUtil(root.left, x);
 
-    var rightHeight = this.findHeightUtil(root.right, x);
+    let rightHeight = this.findHeightUtil(root.right, x);
 
-    // Update height of the current node
-    var ans = Math.max(leftHeight, rightHeight) + 1;
+   
+    let ans = Math.max(leftHeight, rightHeight) + 1;
 
-    // If current node is the required node
+  
     if (root.data == x)
         this.height = ans;
 
@@ -171,10 +169,9 @@ findHeightUtil(root, x)
 findHeight(root, x)
 {
     
-    // Stores height of the Tree
+   
     this.findHeightUtil(root, x);
 
-    // Return the height
     return this.height;
 }
 
@@ -183,25 +180,23 @@ findHeight(root, x)
 findDepth(root, x)
 {
     
-    // Base case
+   
     if (root == null)
         return -1;
 
-    // Initialize distance as -1
-    var dist = -1;
+ 
+    let dist = -1;
 
-    // Check if x is current node=
+  
     if ((root.data == x)|| 
     
-        // Otherwise, check if x is
-        // present in the left subtree
+      
         (dist = this.findDepth(root.left, x)) >= 0 || 
         
-        // Otherwise, check if x is
-        // present in the right subtree
+      
         (dist = this.findDepth(root.right, x)) >= 0)
 
-        // Return depth of the node
+     
         return dist + 1;
         
     return dist;
@@ -211,30 +206,29 @@ findDepth(root, x)
 
 hight(root) {
 
-    // Base case: Height of empty tree is zero
+ 
     if (root === null)
         return 0;
 
-    // Height = 1 + max of left height and right heights
+   
     return 1 + Math.max(this.hight(root.left), this.hight(root.right));
 }
 
 isBalanced(root) {
 
-    // If tree is empty then return true
+   
     if (root === null)
         return true;
 
-    // Get the height of left and right subtrees
+ 
     let lHeight = this.hight(root.left);
     let rHeight = this.hight(root.right);
 
-    // If absolute height difference is greater than 1
-    // Then return false
+   
     if (Math.abs(lHeight - rHeight) > 1)
         return false;
 
-    // Recursively check the left and right subtrees
+  
     return this.isBalanced(root.left) && this.isBalanced(root.right);
 }
 
@@ -246,13 +240,13 @@ storeInorder(root, array) {
     if (root === null)
         return;
 
-    // Traverse the left subtree
+    
     this.storeInorder(root.left, array);
 
-    // Store the node data
+  
     array.push(root.data);
 
-    // Traverse the right subtree
+   
     this.storeInorder(root.right, array);
 }
 
@@ -261,20 +255,14 @@ storeInorder(root, array) {
 balanceBST(root) {
     let array = [];
 
-    // Store the nodes in sorted order
+    
     this.storeInorder(root, array);
 
-    // Build the balanced tree from the sorted nodes
+   
     return this.buildTree(array, 0, array.length - 1);
 }
 
 
-
-// THIS MAY NOT WORK
-
-/*Balance(array) {
-    return buildTree(array, 0, array.length - 1);
-}*/
 
 preOrder(root) {
     if (root === null) return ;
@@ -335,8 +323,8 @@ prettyPrint(node, prefix, isLeft) {
       return;
     }
   
-    prefix = prefix || ""; // Default prefix if not provided
-    isLeft = isLeft === undefined ? true : isLeft; // Default isLeft if not provided
+    prefix = prefix || ""; // 
+    isLeft = isLeft === undefined ? true : isLeft; 
   
     if (node.right !== null) {
       this.prettyPrint(node.right, prefix + (isLeft ? "│   " : "    "), false);
@@ -356,7 +344,7 @@ prettyPrint(node, prefix, isLeft) {
 
 // CALL PHASE
 
-const arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+/*const arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
 
 
 const practice = new Tree();
@@ -418,8 +406,91 @@ practice.prettyPrint(root);
 
 practice.prettyPrint(balancedRoot);
 
+let res1 = practice.levelOrder(balancedRoot);
+
+
+res2 = res1.map(level => level.join(" "));
+console.log(res2.join(" "));
+
+
+if (practice.isBalanced(balancedRoot)) {
+    console.log("True");
+} else {
+    console.log("False");
+}*/
+
+const arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 92];
+
+const practice = new Tree();
+
+const dfree = practice.removeDuplicates(arr);
+
+const sdfree = practice.sortArray(dfree);
+
+
+console.log(sdfree);
+
+
+// USE THIS AT THE END
+let root = practice.buildTree(sdfree, 0, 9);
+
+
+
+if (practice.isBalanced(root)) {
+    console.log("True");
+} else {
+    console.log("False");
+}
+
+practice.prettyPrint(root);
+
+practice.preOrder(root);
+
+let res = practice.levelOrder(root);
+
+
+res = res.map(level => level.join(" "));
+console.log(res.join(" "));
+
+practice.postOrder(root);
+
+practice.inOrder(root);
+
+
+root = practice.insert(root, 125);
+
+root = practice.insert(root, 150);
+
+practice.prettyPrint(root);
+
+
+if (practice.isBalanced(root)) {
+    console.log("True");
+} else {
+    console.log("False");
+}
+
+
+let balancedRoot = practice.balanceBST(root);
+
+practice.prettyPrint(balancedRoot);
+
 if (practice.isBalanced(balancedRoot)) {
     console.log("True");
 } else {
     console.log("False");
 }
+
+
+let res1 = practice.levelOrder(balancedRoot);
+
+
+res2 = res1.map(level => level.join(" "));
+console.log(res2.join(" "))
+
+practice.preOrder(balancedRoot);
+
+practice.postOrder(balancedRoot);
+
+practice.inOrder(balancedRoot);
+
