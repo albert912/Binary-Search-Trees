@@ -134,6 +134,23 @@ return root;
 
 }
 
+
+
+// Function for finding height
+
+
+height(root) {
+    if (root === null) {
+        return -1;
+    }
+
+    // compute the height of left and right subtrees
+    let lHeight = this.height(root.left);
+    let rHeight = this.height(root.right);
+
+    return Math.max(lHeight, rHeight) + 1;
+}
+
 // THIS MAY NOT WORK
 
 Balance(array) {
@@ -175,14 +192,14 @@ levelOrderRec(root, level, res) {
 
    
 
-    // Add a new level to the result if needed
+   
     if (res.length <= level) 
         res.push([]);
 
-    // Add current node's data to its corresponding level
+   
     res[level].push(root.data);
 
-    // Recur for left and right children
+   
     this.levelOrderRec(root.left, level + 1, res);
    this.levelOrderRec(root.right, level + 1, res);
 }
@@ -264,3 +281,5 @@ res = res.map(level => level.join(" "));
 console.log(res.join(" "));
 
 practice.postOrder(root);
+
+console.log(practice.height(root));
