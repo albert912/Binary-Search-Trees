@@ -341,3 +341,4 @@ practice.postOrder(root);
 console.log("Depth: " + practice.findDepth(root, 5));
 
 console.log("Height: " + practice.findHeight(root, 5));
+
