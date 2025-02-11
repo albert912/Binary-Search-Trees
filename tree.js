@@ -238,6 +238,37 @@ isBalanced(root) {
     return this.isBalanced(root.left) && this.isBalanced(root.right);
 }
 
+// Write function for rebalance
+
+//part 1
+
+storeInorder(root, array) {
+    if (root === null)
+        return;
+
+    // Traverse the left subtree
+    this.storeInorder(root.left, array);
+
+    // Store the node data
+    array.push(root.data);
+
+    // Traverse the right subtree
+    this.storeInorder(root.right, array);
+}
+
+// part 2 
+
+balanceBST(root) {
+    let array = [];
+
+    // Store the nodes in sorted order
+    this.storeInorder(root, array);
+
+    // Build the balanced tree from the sorted nodes
+    return this.buildTree(array, 0, array.length - 1);
+}
+
+
 
 // THIS MAY NOT WORK
 
@@ -380,3 +411,15 @@ if (practice.isBalanced(root)) {
     console.log("False");
 }
 
+
+let balancedRoot = practice.balanceBST(root);
+
+practice.prettyPrint(root);
+
+practice.prettyPrint(balancedRoot);
+
+if (practice.isBalanced(balancedRoot)) {
+    console.log("True");
+} else {
+    console.log("False");
+}
