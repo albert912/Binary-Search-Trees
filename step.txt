@@ -1,0 +1,54 @@
+
+Steps
+
+1. I need to add codes the necessary codes from sortedArray function to Tree Class.
+
+1.a. Initializing this tree class with a root, which uses the return value of buildTree which you’ll write next.
+
+1.b. writing buildTree function to build a balanced BST from a sorted array. (This corresponds to the sortedArrayToBSTRecur function you have already implemented.)
+
+1.c. writing insert function to BST  (I can use my basic BST code's logic for this) for making sure to maintain the BST property (smaller values go left, larager values go right).
+
+1.d. writing deleteItem function by adding the logic for node deletion to deal with different cases (no children, one child, two children).
+
+1.f. writing the find function which corresponds to searching through the tree to finda specific value, which can be done by traversing left or right based on comparison (just like BST logic). (! This is additional)
+
+1.g. writing traversal methods (inOrder, preOrder, postOrder). These traversal methods correspond directly to the traversal methods in the original code I provided. You'll be visiting nodes in different orders and calling a callback for each one.
+
+
+2. figure out how to implement levelOrder(callback) function.
+
+3. figure out how to implement height(node) function.
+
+4. figure out how to implement depth(node) function.
+
+5. figure out how to implement isBalanced function.
+
+6. figure out how to implement rebalance function.
+
+7. Implement "tie it all together" section!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

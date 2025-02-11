@@ -50,6 +50,14 @@ function preOrder(root) {
 
 ---
 
+// Example: Convert sorted array to BST
+const arr = [1, 2, 3, 4]; // Input sorted array
+const root = sortedArrayToBST(arr); // Create BST
+preOrder(root); // 
+
+
+---
+
 end= array.length -1
 ----
 
@@ -93,3 +101,5 @@ Tips from mergesort
 
   const leftSize = mid - start + 1;
   const rightSize = end - mid;
+
+-----

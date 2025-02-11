@@ -1,0 +1,4 @@
+ buildTree(array, start = 0, end = undefined){
+
+
+end ??= array.length -

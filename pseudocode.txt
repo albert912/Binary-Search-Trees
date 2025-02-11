@@ -1,0 +1,6 @@
+Pseudocode for buildTree(array)
+
+(Write a buildTree(array) function that takes an array of data (e.g., [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]) and turns it into a balanced binary tree full of Node objects appropriately placed (don’t forget to sort and remove duplicates!). The buildTree function should return the level-0 root node.)
+
+
+hint : hint --> start = 0, end = array.length - 1;
