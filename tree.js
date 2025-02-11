@@ -109,6 +109,8 @@ search(root, data)
 
 
 
+
+
  buildTree(array, start , end){
 
 
@@ -139,7 +141,7 @@ Balance(array) {
 }
 
 preOrder(root) {
-    if (root === null) return;
+    if (root === null) return ;
     console.log(root.data);
     this.preOrder(root.left);
     this.preOrder(root.right);
@@ -152,6 +154,32 @@ inOrder(root) {
         console.log(root.data + " ");
         this.inOrder(root.right);
     }
+}
+
+// Function for lever order traversal
+
+levelOrderRec(root, level, res) {
+    if (!root) return;
+
+
+   
+
+    // Add a new level to the result if needed
+    if (res.length <= level) 
+        res.push([]);
+
+    // Add current node's data to its corresponding level
+    res[level].push(root.data);
+
+    // Recur for left and right children
+    this.levelOrderRec(root.left, level + 1, res);
+   this.levelOrderRec(root.right, level + 1, res);
+}
+
+ levelOrder(root) {
+    const res = [];
+    this.levelOrderRec(root, 0, res);
+    return res;
 }
 
 
@@ -218,4 +246,8 @@ practice.prettyPrint(root);
 console.log(practice.search(root, 8));
 
 
+let res = practice.levelOrder(root);
 
+
+res = res.map(level => level.join(" "));
+console.log(res.join(" "));
