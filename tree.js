@@ -139,16 +139,72 @@ return root;
 // Function for finding height
 
 
-height(root) {
-    if (root === null) {
+findHeightUtil(root, x)
+{
+    
+    // Base Case
+    if (root == null)
+    {
         return -1;
     }
 
-    // compute the height of left and right subtrees
-    let lHeight = this.height(root.left);
-    let rHeight = this.height(root.right);
+    // Store the maximum height of
+    // the left and right subtree
+    var leftHeight = this.findHeightUtil(root.left, x);
 
-    return Math.max(lHeight, rHeight) + 1;
+    var rightHeight = this.findHeightUtil(root.right, x);
+
+    // Update height of the current node
+    var ans = Math.max(leftHeight, rightHeight) + 1;
+
+    // If current node is the required node
+    if (root.data == x)
+        this.height = ans;
+
+    return ans;
+}
+
+
+
+
+
+findHeight(root, x)
+{
+    
+    // Stores height of the Tree
+    this.findHeightUtil(root, x);
+
+    // Return the height
+    return this.height;
+}
+
+// Function for finding depth
+
+findDepth(root, x)
+{
+    
+    // Base case
+    if (root == null)
+        return -1;
+
+    // Initialize distance as -1
+    var dist = -1;
+
+    // Check if x is current node=
+    if ((root.data == x)|| 
+    
+        // Otherwise, check if x is
+        // present in the left subtree
+        (dist = this.findDepth(root.left, x)) >= 0 || 
+        
+        // Otherwise, check if x is
+        // present in the right subtree
+        (dist = this.findDepth(root.right, x)) >= 0)
+
+        // Return depth of the node
+        return dist + 1;
+        
+    return dist;
 }
 
 // THIS MAY NOT WORK
@@ -282,4 +338,6 @@ console.log(res.join(" "));
 
 practice.postOrder(root);
 
-console.log(practice.height(root));
+console.log("Depth: " + practice.findDepth(root, 5));
+
+console.log("Height: " + practice.findHeight(root, 5));
