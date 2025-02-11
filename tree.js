@@ -148,6 +148,17 @@ preOrder(root) {
 
 }
 
+postOrder(root) {
+
+    if (root === null) return ;
+
+    this.postOrder(root.left);
+
+    this.postOrder(root.right);
+
+    console.log(root.data + " ");
+}
+
 inOrder(root) {
     if (root !== null) {
         this.inOrder(root.left);
@@ -251,3 +262,5 @@ let res = practice.levelOrder(root);
 
 res = res.map(level => level.join(" "));
 console.log(res.join(" "));
+
+practice.postOrder(root);
