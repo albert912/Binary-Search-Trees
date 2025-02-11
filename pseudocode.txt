@@ -1,6 +1,84 @@
 Pseudocode for buildTree(array)
 
+FOR STEP 3!
+
 (Write a buildTree(array) function that takes an array of data (e.g., [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]) and turns it into a balanced binary tree full of Node objects appropriately placed (don’t forget to sort and remove duplicates!). The buildTree function should return the level-0 root node.)
 
 
 hint : hint --> start = 0, end = array.length - 1;
+
+(
+Algorithm
+
+a. Initialize start = 0, end=length of the array -1
+
+b. mid = (start+end)/2
+
+c. Create a tree node with mid as root (lets call it A)
+
+d. Recursively do following steps:
+
+e. Calculate mid of the left subarray and make it root of left subtree of A.
+
+f. Calculate mid of the right subarray and make it root of right subtree of A.
+
+
+
+)
+
+1. Declare start and end values.
+
+2. Declare mid value based on start and end value.
+
+3. Declare root value based on mid value.
+
+4. Create recursive function for creating left subtree.
+
+5. Create recursive function for creating right subtree.
+
+6.  Return root.
+
+7. Think whether to add function for eliminating the duplication inside buildTree method or outside of this method as another method.
+
+
+FOR STEP 4! (insertion)
+
+!!! You need to implement to insertion on the binary search tree not on the array!
+
+1. Initilize the current node (say, currNode or node) with root node
+
+1.a. if the BST (root) is tree return use only the data of Node class.
+
+code =  if (root === null)
+        return new Node(key); 
+
+1.b. if the node is equal to the current node value do not add it.
+
+code =   if (root.key === key)
+        return root;
+
+2. Compare the key with the current node.
+
+2.a. Move left if the key is less than or equal to the current node value.
+
+   if (key < root.key)
+        root.left = insert(root.left, key);
+
+2.b. Move right if the key is greater than current node value.
+
+  code = else if (key > root.key)
+        root.right = insert(root.right, key);
+
+
+3. Repeat steps 2 and 3 until you reach a leaf node.
+
+4. Attach the new key as a left or right child based on the comparison with the leaf node’s value.
+
+
+code =   return root;
+
+
+
+
+
+

@@ -29,6 +29,85 @@ sortArray(arr) {
 
   
 
+  // Function for inserting a node
+
+  insert(root, data) {
+
+    if (root === null)
+        return new Node(data);
+        
+    
+    if (root.data === data)
+        return data;
+        
+    if (data < root.data)
+        root.left = this.insert(root.left, data);
+    else if (data > root.data)
+        root.right = this.insert(root.right, data);
+
+    return root;
+}
+
+
+   // Function for deleting a node
+
+   getSuccessor(curr) {
+    curr = curr.right;
+    while (curr !== null && curr.left !== null) {
+        curr = curr.left;
+    }
+    return curr;
+}
+
+delNode(root, x) {
+   
+    if (root === null) {
+        return root;
+    }
+
+  
+    if (root.data > x) {
+        root.left = this.delNode(root.left, x);
+    } else if (root.data < x) {
+        root.right = this.delNode(root.right, x);
+    } else {
+        
+
+        
+        if (root.left === null) 
+            return root.right;
+
+        
+        if (root.right === null) 
+            return root.left;
+
+        
+        let succ = getSuccessor(root);
+        root.key = succ.key;
+        root.right = delNode(root.right, succ.key);
+    }
+    return root;
+}
+
+// Function for finding value
+
+search(root, data)
+{
+
+    // Base Cases: root is null or key is 
+    // present at root
+    if (root === null || root.data === data)
+        return root;
+
+    // Key is greater than root's key
+    if (root.data < data)
+        return this.search(root.right,data);
+
+    // Key is smaller than root's key
+    return this.search(root.left, data);
+}
+
+
 
  buildTree(array, start , end){
 
@@ -67,6 +146,15 @@ preOrder(root) {
 
 }
 
+inOrder(root) {
+    if (root !== null) {
+        this.inOrder(root.left);
+        console.log(root.data + " ");
+        this.inOrder(root.right);
+    }
+}
+
+
 prettyPrint(node, prefix, isLeft) {
     if (node === null) {
       return;
@@ -86,6 +174,9 @@ prettyPrint(node, prefix, isLeft) {
     }
   }
 
+
+
+
 }
 
 // CALL PHASE
@@ -104,10 +195,26 @@ console.log(sdfree);
 
 
 // USE THIS AT THE END
-const root = practice.buildTree(sdfree, 0, 10);
+let root = practice.buildTree(sdfree, 0, 10);
 
 practice.preOrder(root);
 
+root = practice.insert(root, 6000);
+
+root = practice.insert(root, 2);
+
 practice.prettyPrint(root);
+
+root = practice.delNode(root, 1);
+
+root = practice.delNode(root, 2);
+
+
+practice.inOrder(root);
+
+
+practice.prettyPrint(root);
+
+console.log(practice.search(root, 8));
 
 

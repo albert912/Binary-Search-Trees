@@ -28,6 +28,39 @@ Steps
 
 7. Implement "tie it all together" section!
 
+--
+HINT!!
+
+Got it! Here's the breakdown of the steps from the instructions that correspond to the basic BST code you provided earlier:
+
+Build the Node class:
+
+This corresponds to the basic structure of the nodes in your tree. In the code you provided, you already have the basic concept of nodes, but you need to ensure the Node class has attributes for data, left, and right.
+
+Build the Tree class:
+
+The basic BST code you provided can be extended into a Tree class. You will initialize this tree with a root (which is the result of the buildTree function), and you can later add functions like insert and deleteItem.
+Write the buildTree function:
+
+This corresponds to the sortedArrayToBSTRecur function you have already implemented. This function will be used to build a balanced BST from a sorted array (which requires sorting and removing duplicates).
+
+Write the insert function:
+
+You can use your basic BST code's logic to insert a new node into the tree, making sure to maintain the BST property (smaller values go left, larger values go right).
+
+Write the deleteItem function:
+
+You would need to extend your code by adding the logic for node deletion, dealing with different cases (no children, one child, two children).
+
+Write the find function:
+
+This corresponds to searching through the tree to find a specific value, which can be done by traversing left or right based on comparison (just like your BST logic).
+
+Write traversal methods (inOrder, preOrder, postOrder):
+
+These traversal methods correspond directly to the traversal methods in the original code you provided. You'll be visiting nodes in different orders and calling a callback for each one.
+So, most of the code you've already written can be reused or adapted for steps like building the tree, inserting, and deleting nodes. You just need to expand and structure them in a more formalized way (like with the Tree class and other methods). The rest (like find, levelOrder, height, etc.) will be new additions to extend the functionality.
+
 
 
 
